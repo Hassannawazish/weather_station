@@ -1,3 +1,7 @@
+### `npx create-react-app frontend`
+
+Creation of React App.
+
 ### `npm install`
 
 Install Packeges from package.json
