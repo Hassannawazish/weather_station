@@ -1,11 +1,17 @@
-import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import React from "react";
+import { Navbar, Container } from "react-bootstrap";
 
-function Header() {
+const navbar_color = {
+  backgroundColor: "lightyellow",
+};
+
+function Header(properties) {
   return (
-      <Navbar bg="light" data-bs-theme="light">
-          <Navbar.Brand href="/">Weather Station</Navbar.Brand>
-      </Navbar>
+    <Navbar style={navbar_color} varient="light" data-bs-theme="light">
+      <Container>
+        <Navbar.Brand href="/">{properties.title}</Navbar.Brand>
+      </Container>
+    </Navbar>
   );
 }
 
