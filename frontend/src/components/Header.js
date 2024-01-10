@@ -3,7 +3,7 @@ import { Navbar, Container } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/logo.svg";
 
 const navbar_color = {
-  backgroundColor: "brown",
+  backgroundColor: "#9292ad",
 };
 
 function Header(properties) {
@@ -11,7 +11,7 @@ function Header(properties) {
     <Navbar style={navbar_color} varient="light" data-bs-theme="light">
       <h1
         style={{
-          color: "#C8D700",
+          color: "#000",
           textAlign: "center", // Text alignment
           textTransform: "uppercase", // Uppercase text
           fontSize: "2em", // Font size
