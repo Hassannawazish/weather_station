@@ -27,23 +27,6 @@ if mongo_client:
 else:
     print("Unable to connect to MongoDB. Check your connection settings.")
 
-data_to_insert = {
-    "temperature": 25.5,
-    "windspeed": 10.2,
-    "detail": {
-        "winddirection": "N",
-        "pressure": 1010.2,
-        "weather_type": "Sunny"
-    }
-}
-
-weather_data_collection.insert_one(data_to_insert)
-
-result = weather_data_collection.find_one({"temperature": 25.5, "windspeed": 10.2})
-if result:
-    print("Data successfully inserted:", result)
-else:
-    print("Failed to insert data.")
 
 # db = client.collection_name
 # try:
