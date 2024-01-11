@@ -7,3 +7,6 @@
 *   Communication Protocols:
         SPI
             ![Alt text](image.png)
+
+*   Python code info
+        # print(__name__)
