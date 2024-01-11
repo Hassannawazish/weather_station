@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask\
+
+from database.db import client
 
 app = Flask(__name__)
 
