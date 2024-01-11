@@ -1,5 +1,5 @@
 import pymongo
-from pymongo import errors
+from pymongo import MongoClient, errors
 
 mongo_user = None  # Leave it empty as there is no username
 mongo_password = None  # Leave it empty as there is no password
@@ -20,8 +20,12 @@ def mongodb_connect(CONNECTION_STRING):
         client = None
     return client
 
-client = mongodb_connect(CONNECTION_STRING)
-weather_data_collection = client[mongo_db][collection_name]
+mongo_client = mongodb_connect(CONNECTION_STRING)
+
+if mongo_client:
+    weather_data_collection = mongo_client[mongo_db][collection_name]
+else:
+    print("Unable to connect to MongoDB. Check your connection settings.")
 
 data_to_insert = {
     "temperature": 25.5,
