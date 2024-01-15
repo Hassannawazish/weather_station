@@ -11,3 +11,7 @@ pipenv install flask            (lower case convension)
 * To run flask webapp                              (In case you didn't defined __main__ function)
     env FLASK_APP=main.py flask run
     otherwise(python3 main.py)
+
+* To Integrate the mongodb locally you have to install mongodb and mongodb clusted and create a default database and collection(without password setup).
+
+* To integrate the mongodb from cloud you do not have to install anything. You just have to create the mongodb database and collection online and copy the connection string and paste in code.
