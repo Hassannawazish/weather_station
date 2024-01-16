@@ -1,54 +1,45 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
-import Search from './components/Search';
-import ImageCard from './components/ImageCard';
 import Welcome from './components/Welcome';
+import { Container } from 'react-bootstrap';
+import axios from 'axios';
+import WeatherSection from './components/weather';
 
-import { Container, Col, Row } from "react-bootstrap";
-
-const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+const backendUrl = "http://localhost:5050";
 
 const App = () => {
-  const [word, setWord] = useState('');
-  const [images, setImages] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
+  const [specificData, setSpecificData] = useState(null);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log(word);
-    fetch(
-      `https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setImages([{ ...data, title: word }, ...images]);
-        console.log(images);
+  const fetchData = () => {
+    axios.get(`${backendUrl}/weather_data`)
+      .then(response => {
+        // console.log('Weather Data Response:', response);
+        const dataArray = response.data;
+        console.log("Array", dataArray);
+        setWeatherData(dataArray);
+        console.log(weatherData)
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
       });
-    setWord("");
   };
 
-  const handleDeleteImage = (id) => {
-    setImages(images.filter((image) => image.id !== id ));
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
-      <Header/>
-      <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
+      <Header />
       <Container className="mt-4">
-        {images.length ? (
-        <Row xs={1} md={2} lg={3}>
-          {images.map((image, i) => (
-            <Col key={i} className="pb-3">
-              <ImageCard key={i} image={image} deleteButton={handleDeleteImage} />
-            </Col>
-          ))}
-        </Row>
-        ) : (<Welcome/>)}
+        <WeatherSection
+          weatherData={weatherData}
+          specificData={specificData}
+          fetchData={fetchData}
+        />
+        <Welcome />
       </Container>
     </div>
   );
