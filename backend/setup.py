@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
+from flask_cors import CORS
 from bson import ObjectId
 
 from database.db import weather_data_collection
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 
 class WeatherDataResource(Resource):
     def get(self, data_id=None):
