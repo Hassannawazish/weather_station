@@ -11,7 +11,7 @@ CONNECTION_STRING = "mongodb+srv://"+mongo_user+":"+mongo_password+"@weatherdata
 
 def mongodb_connect(CONNECTION_STRING):
     try:
-        client = pymongo.MongoClient(CONNECTION_STRING)
+        client = pymongo.MongoClient(CONNECTION_STRING, connectTimeoutMS=100000, socketTimeoutMS=100000)
         client.server_info()
         print("Server Connected")
     except errors.ServerSelectionTimeoutError as err:
