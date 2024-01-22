@@ -10,4 +10,4 @@ def base():
 
 if __name__ == "__main__":
     setproctitle.setproctitle('ProdElect3D')
-    app.run(host="localhost", port=5050, debug=True)
+    app.run(host="localhost", port=3000, debug=True)

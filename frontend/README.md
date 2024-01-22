@@ -20,3 +20,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 To install Bootstrap.
 
+npm install animate.css

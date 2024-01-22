@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import WeatherSection from './components/weather';
 
-const backendUrl = "http://localhost:5050";
+const backendUrl = "http://localhost:3000";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
