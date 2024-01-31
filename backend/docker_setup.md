@@ -8,7 +8,7 @@
     sudo docker images 
     sudo lsof -i :5050
     sudo kill -9 <PID>
-    sudo docker run -p 5050:5050 weatheresp
+    sudo docker run -p 5050:5050 -e MONGO_PASSWORD="" weatheresp
 
 * Removal of docker container 
     sudo docker images  
