@@ -6,3 +6,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* WeatherCard.css */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.animate-icon {
+  display: inline-block;
+  /* Ensures that the container takes the size of the icon */
+  animation: shake 0.5s ease-in-out infinite;
+  /* 0.5s duration, ease-in-out timing function, infinite loop */
+}
+
+/* WeatherCard.css */
+@keyframes windAnimation {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-wind-icon {
+  display: inline-block;
+  animation: windAnimation 1s ease-in-out infinite;
+  /* Adjust duration, timing function, and rotation values as needed */
+}
