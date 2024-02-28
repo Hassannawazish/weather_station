@@ -11,19 +11,28 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+
       - name: Install Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+
       - name: Install dependencies
         run: |
           pip install pipenv
           cd backend
           pipenv install --dev
+
       - name: Set up environment variables
         run: |
           echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> $GITHUB_ENV
+
       - name: Run Flask App
         run: |
           cd backend
           pipenv run python3 main.py
+
+      - name: Deploy to Surge
+        run: |
+          cd backend
+          surge --project ./backend/build weatherAppHassanbe.surge.sh --token ${{ secrets.SURGE_TOKEN }}
