@@ -1,6 +1,6 @@
 import setproctitle
 
-from setup import api, app, WeatherDataResource
+from setupapp import api, app, WeatherDataResource
 
 api.add_resource(WeatherDataResource, "/weather_data", "/weather_data/<string:data_id>")
 
