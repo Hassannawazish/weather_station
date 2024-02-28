@@ -31,4 +31,5 @@ jobs:
       - name: Deploy to Surge
         run: |
           cd backend
+          ls -l ./dist
           pipenv run surge ./dist weatherapphassanbe.surge.sh --token ${{ secrets.SURGE_TOKEN }}
