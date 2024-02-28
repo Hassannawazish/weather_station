@@ -6,33 +6,31 @@ on:
       - main
 
 jobs:
-  deploy-backend:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Install Python
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
 
       - name: Install dependencies
         run: |
+          
           pip install pipenv
           cd backend
           pipenv install --dev
+          pipenv run python setup.py sdist bdist_wheel
 
-      - name: Set up environment variables
-        run: |
-          echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> $GITHUB_ENV
+      - name: Activate virtual environment
+        run: pipenv shell
 
-      - name: Run Flask App
-        run: |
-          cd backend
-          pipenv run python3 main.py
+      - name: Install Surge
+        run: pipenv run npm install -g surge
 
       - name: Deploy to Surge
         run: |
-          cd backend
-          surge --project ./backend/build weatherAppHassanbe.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          pipenv run surge ./dist weather-flask-app.surge.sh --token ${{ secrets.SURGE_TOKEN }}
