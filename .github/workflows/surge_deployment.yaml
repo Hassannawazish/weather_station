@@ -36,7 +36,13 @@ jobs:
       - name: Install Python and Pipenv
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.8.10
+      
+      - name: Install Pipenv
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+
 
       - name: Install Dependencies and Run Flask App
         run: |
