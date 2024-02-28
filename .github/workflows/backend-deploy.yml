@@ -30,4 +30,5 @@ jobs:
 
       - name: Deploy to Surge
         run: |
+          cd backend
           pipenv run surge ./dist weather-flask-app.surge.sh --token ${{ secrets.SURGE_TOKEN }}
