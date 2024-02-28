@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Deploying to surge
+    env:
+      CI: false  # Set CI environment variable to false
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -18,14 +20,10 @@ jobs:
         with:
           node-version: 12
 
-      - name: Install npm
+      - name: Install npm and Build React App
         run: |
           cd frontend
           npm install
-
-      - name: Build React App
-        run: |
-          cd frontend
           npm run build
 
       - name: Install Surge
@@ -33,5 +31,4 @@ jobs:
 
       - name: Run surge
         run: |
-          cd frontend
-          surge ./build weatherAppHassan.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          surge ./frontend/build weatherAppHassan.surge.sh --token ${{ secrets.SURGE_TOKEN }}
