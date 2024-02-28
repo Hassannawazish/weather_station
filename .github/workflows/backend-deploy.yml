@@ -25,9 +25,6 @@ jobs:
           pipenv install --dev
           pipenv run python -m build
 
-      - name: Activate virtual environment
-        run: pipenv shell
-
       - name: Install Surge
         run: pipenv run npm install -g surge
 
