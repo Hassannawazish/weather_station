@@ -2,7 +2,7 @@ import pymongo, os
 from pymongo import MongoClient, errors
 
 mongo_user = "Hassan_Nawazish"
-mongo_password = os.environ.get('MONGO_PASSWORD')
+mongo_password = "Hassan12345"
 mongo_host = "localhost"
 mongo_port = "27017"
 mongo_db = "WeatherData"
