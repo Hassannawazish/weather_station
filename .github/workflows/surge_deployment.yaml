@@ -51,4 +51,4 @@ jobs:
       - name: Run Flask App
         run: |
           cd backend
-          pipenv run python3 main.py
+          nohup pipenv run python3 main.py &
