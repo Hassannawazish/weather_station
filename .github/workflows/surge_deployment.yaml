@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    name: Deploying to surge
+    name: Deploying Backend and Frontend to Surge
     env:
-      CI: false  # Set CI environment variable to false
+      CI: false
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -29,6 +29,10 @@ jobs:
       - name: Install Surge
         run: npm install -g surge
 
-      - name: Run surge
+      - name: Deploy Backend and Frontend with Surge
         run: |
           surge ./frontend/build weatherAppHassan.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          cd backend
+          pipenv install --dev --python 3.8.10
+          pipenv shell
+          python3 main.py
