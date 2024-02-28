@@ -23,7 +23,7 @@ jobs:
           pip install pipenv
           cd backend
           pipenv install --dev
-          pipenv run python setup.py sdist bdist_wheel
+          pipenv run python -m build
 
       - name: Activate virtual environment
         run: pipenv shell
