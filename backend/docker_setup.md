@@ -20,3 +20,7 @@
 * Visualize Dockers
     sudo docker images
     sudo docker ps -a
+
+* For windows :
+    docker build . -t weatheresp
+    docker run -p 5050:5050 weatheresp
